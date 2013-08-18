@@ -1,7 +1,9 @@
 #!/usr/bin/env python
 """
-Generates wordlist.js, a javascript file containing a list of all the words in
-the Diceware 8k wordlist.
+Generates wordlist.js, a javascript file containing an Array of all the words
+in the Diceware 8k wordlist.
+
+http://world.std.com/~reinhold/dicewarefaq.html#computer
 
 Usage: ./gen_wordlist.py /path/to/d8k.txt > wordlist.js
 """
@@ -18,5 +20,5 @@ original_wordlist_path = sys.argv[1]
 print 'wordlist = ['
 with open(original_wordlist_path) as fp:
     for line in fp:
-        print '  "' + line.strip() + '",'
+        print '  "' + line.strip().replace('"', '\\"') + '",'
 print '];'
